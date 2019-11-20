@@ -15,6 +15,18 @@ export const themes = [syntaxHighlighter, adapt]
 
 </AdaptLayout>
 
+<Notes>
+  <ul>
+    <li>This isn't a technical deep dive, or a hands-on-code type of talk</li>
+    <li>If that's what you're looking for, you should check out GATSBY & DRUPAL SITTING IN A TREE, 3:30 - 4:15pm in Gaige Classroom 202</li>
+    <li>This will be a (hopefully) objective view of Gatsby from the perspective of a longtime Drupal dev</li>
+    <li>Show of hands, who has used Gatsby before?</li>
+    <li>Who has used it on a client project?</li>
+    <li>I want to show you an example of Gatsby sourcing data from Drupal.</li>
+    <li>Please stop me at any time with questions</li>
+  </ul>
+</Notes>
+
 ---
 
 <AdaptLayout>
@@ -49,8 +61,7 @@ export const themes = [syntaxHighlighter, adapt]
 <Notes>
   <ul>
     <li>JAMstacks are analogous to static sites. The key concept is that they do not nessicarily rely on a server to render HTML documents. Instead, HTML documents are generated, or created ahead of time.</li>
-    <li>Gatsby handles this as part of a build process, where it generates all the pages on your site. However, the concept would be the same if you wanted to write HTML by hand.</li>
-    <li>In a sense, this is a return to basics. HTML, CSS + JS are the foundation of the web platform. CMSs like Drupal provide a useful abstraction on top of this foundation.</li>
+    <li>Gatsby handles this as part of a build process, during which it generates all the pages on your site.</li>
   </ul>
 </Notes>
 
@@ -65,19 +76,19 @@ export const themes = [syntaxHighlighter, adapt]
   <ul>
     <li>Fast page loads</li>
     <Appear>
-      <li>Better security</li>
+      <li>Reduced security footprint</li>
       <li>Lower hosting costs</li>
-      <li>Decoupled from your back-end</li>
+      <li>Presentation is seperated from data</li>
     </Appear>
   </ul>
 
   <Notes>
     <ul>
-      <li>HTML documents are generated ahead of time, which means that your users don't need to wait for a server to generate pages on demand. Smart engineers have developed caches like Varnish to mitigate this problem for server rendered sites, but this is an added layer of compleixty for your stack.</li>
+      <li>HTML documents are generated ahead of time, which means that your users don't need to wait for a server to generate pages on demand</li>
       <li>In addition, the fact that JAMstack's are a collection of static HTML documents means that you can easily distribute them to your Content Delivery Network (CDN) of choice. This means that users get served from a data center that is geographically close to them, further improving the speed of the site.</li>
-      <li>Outside of the build process, JAMstack's do not need a direct connection to a server in order to operate. This means no more monitoring for Drupal secuirty updates, no more worrying about patching your servers. Let a company like Amazon or Netlify worry about that so you don't have to.</li>
+      <li>Outside of the build process, JAMstack's do not need a direct connection to a server in order to operate. This means no more monitoring for Drupal secuirty updates, no more worrying about patching your servers.</li>
       <li>Professional hosting for a Drupal site is complicated and expensive. With a JAMstack, you don't have to pay these prices. Instead, you can host inexpensively with a static hosting provider like Amazon's S3, Netlify or Zeit.</li>
-      <li>This may or may not be a positive depending on the project requirements, but it certaintly offers you a lot of flexiblity. This allows you to mix and match data sources or swap out your back-end down the line with minimal refactoring to your codebase. Of course, your data manimpulation will need to change if you change out your back-end, but your HTML, CSS + JS can largely remain the same.</li>
+      <li>This may or may not be a positive depending on the project requirements, but it certaintly offers you a lot of flexiblity. This allows you to mix and match data sources or swap out your back-end down the line with minimal refactoring to your codebase.</li>
   </ul>
   </Notes>
 
@@ -102,7 +113,6 @@ export const themes = [syntaxHighlighter, adapt]
 <Notes>
   <ul>
     <li>Performance best practices are baked into Gatsby, which means you get even better perofrmance than with a traditional static site generator. You get things like inlining of critical CSS, prefetching of linked pages, and page caching out of the box.</li>
-    <li>Gatsby is built on React, so you get to use all the shiny new front-end tech you see on Twitter.</li>
     <li>Gatsby provides native support for responsive images and for progressive image loading (aka the blur technique from Medium)</li>
     <li>It's simple to add PWA support to your site out of the box, which means that your users can use the site offline. Complex PWA use cases will still require custom code, but Gatsby offers a great baseline here to get you started.</li>
     <li>Much like the Drupal community, the Gatsby community is excellent. There are plugins for just about every data source and use case that you can possibly think of. Honestly, I was shocked to see how far along the ecosysem has come in a relatively short amount of time.</li>
@@ -146,7 +156,7 @@ export const themes = [syntaxHighlighter, adapt]
   <Notes>
     <ul>
       <li>This combination plays to the strengths of both Drupal + Gatsby</li>
-      <li>This on top of the benefits that come with the JAM stack itself</li>
+      <li>This on top of the benefits that come with the JAMstack itself</li>
     </ul>
   </Notes>
 
@@ -168,11 +178,17 @@ export const themes = [syntaxHighlighter, adapt]
 
   <ul>
     <li>Querying data is done via JSON API Module</li>
-    <li>JSON API currently only supports single bundle collections</li>
     <li>No built in view filters, pagination, etc.</li>
+    <li>Only query one entity type at a time</li>
   </ul>
 
 </AdaptLayout>
+
+<Notes>
+  <ul>
+    <li>Until recently, cross bundle collections were not supported by JSON API. The jsonapi_cross_bundles module aims to solve that</li>
+  </ul>
+</Notes>
 
 ---
 
@@ -182,7 +198,6 @@ export const themes = [syntaxHighlighter, adapt]
 
   <ul>
     <li>There is no server to handle form submissions</li>
-    <li>You need to adpot a client-side solution instead</li>
   </ul>
 
   <Notes>
@@ -201,7 +216,6 @@ export const themes = [syntaxHighlighter, adapt]
 
   <ul>
     <li>The redirect module is a no brainer on a standard Drupal site, but it won't help you in a decoupled site</li>
-    <li>This may be a deal breaker for fickle content editors and SEO buffs</li>
   </ul>
 
 </AdaptLayout>
@@ -213,7 +227,7 @@ export const themes = [syntaxHighlighter, adapt]
   # Built in Authentication
 
   <ul>
-    <li>Once again, you need to roll your own client-side solution</li>
+    <li>There is none.</li>
   </ul>
 
 </AdaptLayout>
@@ -227,7 +241,6 @@ export const themes = [syntaxHighlighter, adapt]
   <ul>
     <li>Gatsby needs to build in order to see changes on the live site</li>
     <li>If you don't want to preview in production, you also need to add a staging environment for preview</li>
-    <li>The Gatsby team has rolled out their first SaaS product to solve this, Gatsby Preview</li>
   </ul>
 
 </AdaptLayout>
@@ -236,7 +249,6 @@ export const themes = [syntaxHighlighter, adapt]
   <ul>
     <li>Waiting for the site to re-build to preview will become an unnaceptable solution. As the site grows, build times increase</li>
     <li>Almost no one will be ok with previewing in production</li>
-    <li>Gatsby preview works really well from what I saw, and there is a companion Drupal module developed by Third & Grove</li>
   </ul>
 </Notes>
 
@@ -244,7 +256,7 @@ export const themes = [syntaxHighlighter, adapt]
 
 <AdaptLayout>
 
-  # Client-side solutions
+  # Client-side solutions form soulutions
 
   <ul>
     <li>Search
@@ -273,6 +285,23 @@ export const themes = [syntaxHighlighter, adapt]
   </Notes>
 
 </AdaptLayout>
+
+---
+
+<AdaptLayout>
+
+  # Preview
+
+  <ul>
+    <li>The Gatsby team has rolled out their first SaaS product to solve this, Gatsby Preview</li>
+  </ul>
+</AdaptLayout>
+
+<Notes>
+  <ul>
+    <li>Gatsby preview works really well from what I saw, and there is a companion Drupal module developed by Third & Grove</li>
+  </ul>
+</Notes>
 
 ---
 
@@ -309,10 +338,7 @@ export const themes = [syntaxHighlighter, adapt]
 </AdaptLayout>
 
 <Notes>
-  <ul>
-    <li>I'm not just talking about the cost of the SaaS replacements, though that is definetely something to keep an eye on</li>
-    <li>I'm also talking about the complexity you introduce to your system by cobbling together all of these services. Some of these problems are relatively easy to solve, others aren't (search)</li>
-  </ul>
+  I want to make this anaology real quick before I move on. I think the decision between decoupled Gatsbys vs standard Drupal is really similar to the cord cutting debate we have going on right now. You can ditch your expensive cable provider and go with streaming services like Netflix or Hulu, in which case you'll save money on your cable bill. But if you want live TV, movies, access to premium television, you're likely going to pay more than just getting cable. Decoupled Gatsby vs standard Drupal is much the same. If you're trying to get feature parity between Drupal + Gatsby, you might be incurring more cost than going with standard Drupal. By cost, I mean $ for SaaS apps as well as complexity of your application.
 </Notes>
 
 ---
@@ -330,19 +356,7 @@ export const themes = [syntaxHighlighter, adapt]
       <li>You have a team of Front-end devs that like working in React</li>
       <li>You're building an interactive app with some static content mixed in</li>
     </Appear>
-
   </ul>
-
-  <Notes>
-    <ul>
-      <li>You have to wait for a build to change content, and builds take minutes to finish. If content is updated more quickly than your build process, things will get ugly</li>
-      <li>You could mitigate the issue of frequent content updates by scheduling builds. For instance, everything that's published gets deployed automatically at Noon and 5pm</li>
-      <li>The more pages you're building, the longer the build process will take</li>
-      <li>The client is not waiting for page generation, and your site can be served entierly from a CDN</li>
-      <li>Reduce context switching and increasing the ability to reuse components accross projects</li>
-      <li>Gatsby is a platform for building React applications</li>
-    </ul>
-  </Notes>
 
 </AdaptLayout>
 
@@ -362,6 +376,17 @@ export const themes = [syntaxHighlighter, adapt]
 
 </AdaptLayout>
 
+  <Notes>
+    <ul>
+      <li>You have to wait for a build to change content, and builds take minutes to finish. If content is updated more quickly than your build process, things will get ugly</li>
+      <li>You could mitigate the issue of frequent content updates by scheduling builds. For instance, everything that's published gets deployed automatically at Noon and 5pm</li>
+      <li>The more pages you're building, the longer the build process will take</li>
+      <li>The client is not waiting for page generation, and your site can be served entierly from a CDN</li>
+      <li>Reduce context switching and increasing the ability to reuse components accross projects</li>
+      <li>Gatsby is a platform for building React applications</li>
+    </ul>
+  </Notes>
+
 ---
 
 <AdaptLayout>
@@ -380,17 +405,18 @@ export const themes = [syntaxHighlighter, adapt]
 
   <ul>
     <li>Gatsby / Drupal integration will continue to improve + develop along with Drupal's API first initiative</li>
-    <li>Gatsby itself is a venture backed company, which means it's likely to continue innovating</li>
-    <li>Gatsby is extremely popular right now, but that may fade over time. The concept of the JAM Stack is more durable and more important</li>
+    <Appear>
+      <li>Gatsby itself is a venture backed company, which means it's likely to continue innovating</li>
+      <li>Gatsby is extremely popular right now, but that may fade over time. The concept of the JAMstack is more durable and more important</li>
+    </Appear>
   </ul>
 
 </AdaptLayout>
 
 <Notes>
   <ul>
-    <li>Until recently, cross bundle collections were not supported by JSON API. The jsonapi_cross_bundles module aims to solve that</li>
     <li>Gatsby's first product is Preview, but I assume they will continue to roll out more over time</li>
-    <li>I don't know what the future holds for Gatsby, but I can say with a fair bit of confidence that JAM Stack will continue to grow in popularity and utility long into the future</li>
+    <li>I don't know what the future holds for Gatsby, but I can say with a fair bit of confidence that JAMstack will continue to grow in popularity and utility long into the future</li>
   </ul>
 </Notes>
 
@@ -398,7 +424,7 @@ export const themes = [syntaxHighlighter, adapt]
 
 <AdaptLayout>
 
-# Technical Resources
+# Resources
 
 <ul>
   <li>Rain drupal distribution: https://www.drupal.org/project/rain</li>
@@ -406,17 +432,6 @@ export const themes = [syntaxHighlighter, adapt]
   <li>Build hooks module: https://www.drupal.org/project/build_hooks</li>
   <li>Gatsby live preview: https://www.drupal.org/project/gatsby</li>
   <li>JSON:API Cross Bundles: https://www.drupal.org/project/jsonapi_cross_bundles/</li>
-</ul>
-
-</AdaptLayout>
-
----
-
-<AdaptLayout>
-
-# Educational Resources
-
-<ul>
   <li>Infustructure examples: https://www.mediacurrent.com/blog/drupal-behind-firewall-gatsby</li>
 </ul>
 
@@ -426,6 +441,6 @@ export const themes = [syntaxHighlighter, adapt]
 
 <AdaptLayout>
 
-# The end
+# Questions?
 
 </AdaptLayout>
